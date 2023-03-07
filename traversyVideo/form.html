@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form</title>
+  </head>
+  <body>
+    <!--Defines an HTML form for user input-->
+    <h1>The form element</h1>
+
+    <form action="/action_page.php">
+      <label for="fname">First name:</label>
+      <input type="text" id="fname" name="fname" /><br /><br />
+      <label for="lname">Last name:</label>
+      <input type="text" id="lname" name="lname" /><br /><br />
+      <input type="submit" value="Submit" />
+    </form>
+
+    <p>
+      Click the "Submit" button and the form-data will be sent to a page on the
+      server called "action_page.php".
+    </p>
+
+    <!--Forms, Continue-->
+    <h1>Form, Part 2</h1>
+    <form action="process.php" method="post">
+      <div>
+        <label>First Name:</label>
+        <input type="text" name="firstName" / placeholder="Enter first name">
+      </div>
+      <br />
+      <div>
+        <label>Last Name:</label>
+        <input type="text" name="lastName" />
+      </div>
+      <br />
+      <div>
+        <label>Email:</label>
+        <!--Use type email when you deal with email adress-->
+        <input type="email" name="email" />
+      </div>
+      <br />
+      <div>
+        <label>Message:</label>
+        <textarea name="message" cols="30" rows="10"></textarea>
+      </div>
+      <br />
+      <div>
+        <label>Gender:</label>
+        <select name="gender">
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <br />
+      <div>
+        <label>Age:</label>
+        <input type="number" name="age" value="30" />
+        <!--Predefined value-->
+      </div>
+      <br />
+      <div>
+        <label>Birthday:</label>
+        <input type="date" name="birthday" />
+      </div>
+      <br />
+      <input type="submit" name="submit" value="Submit" />
+    </form>
+  </body>
+</html>
