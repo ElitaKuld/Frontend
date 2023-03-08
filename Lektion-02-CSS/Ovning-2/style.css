@@ -1,0 +1,55 @@
+.robin h1 {
+    color: coral;
+}
+
+.robin img {
+    width: 500px;
+    border-radius: 250px;
+    margin-right: 25px;
+}
+
+.robin p {
+    color: darkmagenta;
+}
+
+.kingfisher h1 {
+    color: cornflowerblue;
+}
+
+.kingfisher p {
+    color: darkblue;
+}
+
+.kingfisher img {
+    width: 500px;
+    border-radius: 250px;
+    margin-right: 25px;
+}
+
+.domherre h1 {
+    color: crimson;
+}
+
+.domherre p {
+    color: darkred;
+}
+
+.domherre img {
+    width: 500px;
+    border-radius: 250px;
+    margin-right: 25px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    color: blueviolet;
+    text-decoration: underline;
+}
+
+nav a:hover {
+    color: cadetblue;
+    text-decoration: underline;
+}
