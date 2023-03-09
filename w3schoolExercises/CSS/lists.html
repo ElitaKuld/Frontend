@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lists</title>
+    <style>
+      ul.image {
+        list-style-image: url("https://media.tenor.com/APLXHCgChVAAAAAi/purple-square-symbols.gif");
+      }
+      ul.demo {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+      }
+      ul.a {
+        list-style-type: circle;
+      }
+
+      ul.b {
+        list-style-type: square;
+      }
+
+      ol.c {
+        list-style-type: upper-roman;
+      }
+
+      ol.d {
+        list-style-type: lower-alpha;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>The list-style-image Property</h2>
+
+    <p>
+      The list-style-image property specifies an image as the list item marker:
+    </p>
+
+    <ul class="image">
+      <li>Coffee</li>
+      <li>Tea</li>
+      <li>Coca Cola</li>
+    </ul>
+
+    <h2>Remove Default Settings</h2>
+
+    <p>Default list:</p>
+    <ul>
+      <li>Coffee</li>
+      <li>Tea</li>
+      <li>Coca Cola</li>
+    </ul>
+
+    <p>Remove bullets, margin and padding from list:</p>
+    <ul class="demo">
+      <li>Coffee</li>
+      <li>Tea</li>
+      <li>Coca Cola</li>
+    </ul>
+
+    <h2>Different List Item Markers</h2>
+    <p>Example of unordered lists:</p>
+    <ul class="a">
+      <li>Coffee</li>
+      <li>Tea</li>
+      <li>Coca Cola</li>
+    </ul>
+
+    <ul class="b">
+      <li>Coffee</li>
+      <li>Tea</li>
+      <li>Coca Cola</li>
+    </ul>
+
+    <p>Example of ordered lists:</p>
+    <ol class="c">
+      <li>Coffee</li>
+      <li>Tea</li>
+      <li>Coca Cola</li>
+    </ol>
+
+    <ol class="d">
+      <li>Coffee</li>
+      <li>Tea</li>
+      <li>Coca Cola</li>
+    </ol>
+  </body>
+</html>
