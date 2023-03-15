@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BOM-demo</title>
+  </head>
+  <body>
+    <script>
+      // "let" kan man ändra värdet på
+      let person = window.prompt("Vad heter du?");
+      window.alert("Hello " + person + "!");
+
+      let x1 = prompt("Ange ett tal");
+      let x2 = prompt("Ange ett till tal");
+      alert("Summa: " + x1 + x2); // Fel! Konkatenering sker
+
+      // Typomvandling
+      x1 = Number(x1);
+      x2 = Number(x2);
+      alert("Summa: " + (x1 + x2)); //OBS! Parenteser!!! 
+
+      console.log("Summa: " + (x1 + x2));
+
+      
+
+
+
+
+
+
+    </script>
+  </body>
+</html>

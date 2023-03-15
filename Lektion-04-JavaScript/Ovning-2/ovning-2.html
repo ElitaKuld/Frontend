@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Övning 2</title>
+  </head>
+  <body>
+    <!--Skapa ett skript som läser in 
+antalet minuter man i 
+genomsnitt ringer per månad 
+samt kostnaden per minut 
+(via 2 prompt).
+• Som resultat skall programmet 
+visa en dialogruta (alert) där det 
+anges hur stor den beräknade 
+kostnaden per månad blir.
+-->
+
+    <h3>Mobilkostnaden per månad:</h3>
+    <div id="result">Här visas resultatet</div>
+
+    <script>
+      let antalMinuter = Number(
+        prompt("Hur många minuter genomsnitt ringer du per månad?")
+      );
+      let kostnadenPerMinut = Number(prompt("Hur mycket kostar en minut?"));
+      let kostnadenPerMånad = getTheTelephoneBill(
+        antalMinuter,
+        kostnadenPerMinut
+      );
+      alert("Den beräknade kostnaden per månad blir: " + kostnadenPerMånad);
+      document.getElementById("result").innerHTML =
+        "Den beräknade kostnaden per månad blir: " + kostnadenPerMånad;
+
+      function getTheTelephoneBill(antalM, kostnadPerM) {
+        return antalM * kostnadPerM;
+      }
+    </script>
+  </body>
+</html>

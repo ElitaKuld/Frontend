@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Övning 1</title>
+  </head>
+  <body>
+    <!--Skapa en funkton som visar 
+aktuellt datum i detta format:
+Dag den xx månad år
+t.ex.
+Måndag den 20 mars 2023-->
+
+    <h2>Datum idag:</h2>
+    <p id="demo"></p>
+    <button onclick="showTheDate()">Click me to check the date</button>
+
+    <script>
+      const daysOfWeek = [
+        "Söndag",
+        "Måndag",
+        "Tisdag",
+        "Onsdag",
+        "Torsdag",
+        "Fredag",
+        "Lördag",
+      ];
+      const months = [
+        "januari",
+        "februari",
+        "mars",
+        "april",
+        "maj",
+        "juni",
+        "juli",
+        "augusti",
+        "september",
+        "oktober",
+        "november",
+        "december",
+      ];
+
+      let dayOfWeekToday = new Date().getDay();
+      let day = daysOfWeek[dayOfWeekToday];
+      let dateToday = new Date().getDate();
+      let monthNumber = new Date().getMonth();
+      let month = months[monthNumber];
+      let year = new Date().getFullYear();
+
+      function showTheDate() {
+        document.getElementById("demo").innerHTML =
+          day + " den " + dateToday + " " + month + " " + year;
+        console.log(day + " den " + dateToday + " " + month + " " + year);
+      }
+    </script>
+  </body>
+</html>

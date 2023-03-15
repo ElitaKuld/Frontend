@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Extern JS</title>
+    <!--Denna kod körs först!-->
+    <script src="extern.js"></script>
+
+    <!--Denna kod väntar med kompileringen tills body körts klart-->
+    <script defer src="extern.js"></script>
+  </head>
+  <body>
+    <h1>Extern JavaScript</h1>
+
+    <script>
+      // Denna kod körs först
+      alert("Hej internt!");
+    </script>
+    <script src="extern.js">
+      // Denna kod körs inte alls! Man får inte länka till extern kod och ha en annan kod inne i script-taggen samtidigt!
+      alert("Test");
+    </script>
+  </body>
+</html>

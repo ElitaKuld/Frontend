@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM-demo</title>
+  </head>
+  <body>
+    <h1 id="demo">DOM-demo</h1>
+    <div id="demo2"></div>
+    <div id="demo3"></div>
+
+    <script>
+      document.write("Demo"); // Bara i testsyfte
+      // rekommnedation att inte använda var (orsakar buggar)
+      var element = document.getElementById("demo");
+
+      let elem = document.getElementById("demo");
+
+      // constant:
+      const el = document.getElementById("demo");
+      // OBS! el blir ett objekt av typen HTML-element
+      el.innerHTML = "Hello DOM!!!";
+
+      const el1 = document.getElementById("demo3");
+      el1.textContent = "OBS! Enbart text, ej HTML";
+
+      const el2 = document.getElementById("demo2");
+      el2.innerHTML = "<p>New paragraph</p>";
+      el2.style.color = "maroon";
+      el2.style.fontSize = "2em";
+      // Ta bort innehållet från trädet
+      el2.style.display = "none";
+
+      // Döljer innehållet utan att ta bort det
+      el2.style.visibility = "none";
+    </script>
+  </body>
+</html>

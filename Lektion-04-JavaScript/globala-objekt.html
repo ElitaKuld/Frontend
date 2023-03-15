@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Globala JavaScript Objekt Demo</title>
+  </head>
+  <body>
+    <script>
+      // Objekt String----------------------------------------------------------------------------------
+      // Strings are immutable!!
+      let firstName = "Erik";
+      firstName.toUpperCase();
+      console.log(firstName);
+
+      let myName = "Erik"; // ERIK
+      console.log("Hello " + myName.toUpperCase());
+      let myName2 = firstName.toLowerCase(); // erik
+      console.log(myName2);
+
+      console.log("Test");
+
+      // Objekt Number-------------------------------------------------------------------------------------
+      let pi = 3.14159;
+      // Avrunda till två decimaler
+      console.log(pi.toFixed(2)); // 3.14
+      // Avrunda och visa sammanlagt 5 siffror
+      console.log(pi.toPrecision(5)); // 3.1416
+
+      // Objekt Math------------------------------------------------------------------------------------------
+      console.log(Math.PI);
+      console.log(Math.E);
+      console.log(Math.round(2.234)); // 2
+      console.log(Math.pow(3, 2)); // 9
+      console.log(Math.sqrt(16)); // 4
+      console.log(Math.random()); // slumptal mellan 0 och 1
+
+      // Objekt Date-----------------------------------------------------------------------------------------
+      let today = new Date();
+      console.log(today.getFullYear()); // T.ex 2023
+      console.log(today.getMonth()); // 0-11
+      console.log(today.getDate()); // 1-31
+      console.log(today.getDay()); // 0-6
+      console.log(today.getHours()); // 0-23
+      console.log(today.getMinutes()); // 0-59
+      console.log(today.getSeconds()); // 0-59
+      console.log(today.toLocaleDateString()); // T.ex. 2023-03-20
+      console.log(today.toLocaleTimeString()); // T.ex. 10:14:19
+    </script>
+  </body>
+</html>
