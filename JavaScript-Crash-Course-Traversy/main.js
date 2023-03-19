@@ -268,3 +268,152 @@ const addNums3 = num1 => num1 + 7;
 console.log(addNums3(5));
 
 todos.forEach((todo) => console.log(todo.text));
+
+// objektorienterad programmering:
+// constuction function with prototipes:
+
+function Person(firstName, lastName, dob) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.dob = new Date(dob);
+    // creating a function inside an object:
+    this.getBirthYear = function () {
+        return this.dob.getFullYear();
+    }
+    this.getFullName = function () {
+        return this.firstName + " " + this.lastName;
+    }
+}
+
+// Instantiate object:
+const person1 = new Person("John", "Doe", "4-3-1980");
+console.log(person1);
+
+console.log(person1.dob.getFullYear());
+console.log(person1.getBirthYear());
+console.log(person1.getFullName());
+
+// Prototypes:
+function PersonWithPrototype(firstName, lastName, dob) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.dob = new Date(dob);
+}
+
+PersonWithPrototype.prototype.getBirthYear = function () {
+    return this.dob.getFullYear();
+}
+PersonWithPrototype.prototype.getFullName = function () {
+    return this.firstName + " " + this.lastName;
+}
+
+person3 = new PersonWithPrototype("Mary", "Smith", "2-17-1986");
+console.log(person3);
+
+// Class with methods:
+class PersonAsClass {
+    constructor(firstName, lastName, dob) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dob = new Date(dob);
+    }
+    getBirthYear() {
+        return this.dob.getFullYear();
+    }
+    getFullName() {
+        return this.firstName + " " + this.lastName;
+    }
+}
+
+const person4 = new Person("Lilly", "James", "5-22-1985");
+console.log(person4);
+
+//--------------------------------------------------------------------------------------------------------------------------------------------------------
+console.log(window);
+// Single element delector:
+console.log(document.getElementById("my-form"));
+const form = document.getElementById("my-form");
+console.log(form);
+
+// if there are several elements with the same name it selects only the first one!
+console.log(document.querySelector(".container"));
+console.log(document.querySelector("h1"));
+
+//Multi element selector:
+// this one can be anything:
+// returns Nodelist
+console.log(document.querySelectorAll(".item"));
+
+// this one can only be class:
+// returns HTML collection
+// you cannot use array methods with this one
+console.log(document.getElementsByClassName("item"))
+
+console.log(document.getElementsByTagName("li"));
+
+const items = document.querySelectorAll(".item");
+items.forEach((item) => console.log(item));
+
+// Manipulating DOM:
+const ul = document.querySelector(".items");
+// removes all:
+//ul.remove();
+
+const ul2 = document.querySelector(".items");
+//removes one element:
+//ul2.lastElementChild.remove();
+
+// add/change a content:
+ul.firstElementChild.textContent = "Hello!"
+
+ul.children[1].innerText = "Brad";
+
+// add HTML dinamically:
+ul.lastElementChild.innerHTML = "<h4>Hello!</h4>";
+
+const btn = document.querySelector(".btn");
+btn.style.background = "red";
+// you can use a normal function but we go with an arrow function:
+/*
+btn.addEventListener("click", (e) => {
+    e.preventDefault(); // prevents default behaviour
+    console.log("click");
+    console.log(e);
+    console.log(e.target);
+    console.log(e.target.className);
+    document.querySelector("#my-form").style.background = "pink";
+    document.querySelector("body").classList.add("bg-dark");
+    document.querySelector(".items").lastElementChild.innerHTML = "<h1>Hello!</h1>";
+});*/
+
+const myForm = document.querySelector("#my-form");
+const nameInput = document.querySelector("#name");
+const emailInput = document.querySelector("#email");
+const msg = document.querySelector(".msg");
+const userList = document.querySelector("#users");
+
+myForm.addEventListener("submit", onSubmit);
+
+function onSubmit(e) {
+    e.preventDefault();
+    //   console.log(nameInput.value)
+    if (nameInput.value == "" || emailInput.value == "") {
+        //       alert("Please enter fields");
+        msg.classList.add("error");
+        msg.innerHTML = "Please enter all fields";
+        // error message disappears after 3 seconds
+        setTimeout(() => msg.remove(), 3000);
+
+    }
+    else {
+        //    console.log("Success");
+        const li = document.createElement("li");
+        li.appendChild(document.createTextNode(nameInput.value + " : " + emailInput.value));
+
+        userList.appendChild(li);
+
+        // Clear fields:
+        nameInput.value = "";
+        emailInput.value = "";
+    }
+}
