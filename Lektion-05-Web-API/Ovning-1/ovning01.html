@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Övning 1</title>
+  </head>
+  <body>
+    <h1>Övning 1</h1>
+
+    <h2>Information om en bok</h2>
+    <table>
+      <thead>
+        <!--tr is table row-->
+        <tr>
+          <!--Headings-->
+          <th>Title</th>
+          <th>Author</th>
+          <th>Language</th>
+          <th>Antal sidor</th>
+          <th>Utgivningsdatum</th>
+          <th>Förlag</th>
+          <th>ISBN</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <!--Data-->
+          <td id="title"></td>
+          <td id="author"></td>
+          <td id="language"></td>
+          <td id="antalSidor"></td>
+          <td id="utgivningsdatum"></td>
+          <td id="förlag"></td>
+          <td id="isbn"></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Information om en bok (Variant 2)</h2>
+    <table>
+      <thead>
+        <!--tr is table row-->
+        <tr>
+          <!--Headings-->
+          <th id="h0"></th>
+          <th id="h1"></th>
+          <th id="h2"></th>
+          <th id="h3"></th>
+          <th id="h4"></th>
+          <th id="h5"></th>
+          <th id="h6"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <!--Data-->
+          <td id="d0"></td>
+          <td id="d1"></td>
+          <td id="d2"></td>
+          <td id="d3"></td>
+          <td id="d4"></td>
+          <td id="d5"></td>
+          <td id="d6"></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <script>
+      // lösning Variant 1:
+      localStorage.setItem("title", "Trädens hemliga liv");
+      localStorage.setItem("author", "Peter Wohlleben");
+      localStorage.setItem("language", "svenska");
+      localStorage.setItem("antalSidor", "234");
+      localStorage.setItem("utgivningsdatum", "2016-09-12");
+      localStorage.setItem("förlag", "Norstedts");
+      localStorage.setItem("ISBN", "9789113073590");
+      console.log(localStorage);
+
+      const title = localStorage.getItem("title");
+      const author = localStorage.getItem("author");
+      const language = localStorage.getItem("language");
+      const antalSidor = localStorage.getItem("antalSidor");
+      const utgivningsdatum = localStorage.getItem("utgivningsdatum");
+      const förlag = localStorage.getItem("förlag");
+      const isbn = localStorage.getItem("ISBN");
+
+      document.getElementById("title").innerHTML = title;
+      document.getElementById("author").innerHTML = author;
+      document.getElementById("language").innerHTML = language;
+      document.getElementById("antalSidor").innerHTML = antalSidor;
+      document.getElementById("utgivningsdatum").innerHTML = utgivningsdatum;
+      document.getElementById("förlag").innerHTML = förlag;
+      document.getElementById("isbn").innerHTML = isbn;
+
+      // Lösning Variant 2:
+      for (let i = 0; i < localStorage.length; i++) {
+        document.getElementById("h" + i).innerHTML = localStorage
+          .key(i)
+          .toUpperCase();
+        document.getElementById("d" + i).innerHTML = localStorage.getItem(
+          localStorage.key(i)
+        );
+      }
+    </script>
+  </body>
+</html>

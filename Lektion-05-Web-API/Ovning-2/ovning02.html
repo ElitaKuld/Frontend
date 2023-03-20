@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Övning 2</title>
+  </head>
+  <body>
+    <h1>Övning 2</h1>
+    <h3>Ange ditt namn:</h3>
+    <div>
+      <label>First Name:</label>
+      <input id="name" type="text" name="firstName" />
+      <button onclick="myFunction()">Spara</button>
+    </div>
+    <div id="welcome"></div>
+
+    <script>
+      function myFunction() {
+        const name = document.querySelector("#name").value;
+        localStorage.setItem("name", name);
+        document.getElementById("welcome").innerHTML =
+          localStorage.getItem("name");
+      }
+    </script>
+  </body>
+</html>

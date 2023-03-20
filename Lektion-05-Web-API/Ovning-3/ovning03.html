@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Övning 3</title>
+  </head>
+  <body>
+    <h1>Övning 3</h1>
+    <h2>Ange dina favoritspråk</h2>
+
+    <div>
+      <input id="language" type="text" name="language" />
+      <button onclick="myFunction()">Lägg till</button>
+    </div>
+
+    <ul id="myList"></ul>
+
+    <script>
+      const myList = document.querySelector("#myList");
+
+      function fillTheList() {
+        removeAllChildNodes(myList);
+        for (let i = 0; i < localStorage.length; i++) {
+          const li = document.createElement("li");
+          li.appendChild(
+            document.createTextNode(localStorage.getItem("language" + i))
+          );
+          myList.appendChild(li);
+        }
+      }
+      fillTheList();
+
+      let counter = localStorage.length;
+
+      function myFunction() {
+        const language = document.querySelector("#language").value;
+        localStorage.setItem("language" + counter, language);
+
+        /*
+          const li = document.createElement("li");
+          li.appendChild(document.createTextNode(language));
+          document.querySelector("#myList").appendChild(li);
+      */
+        counter++;
+
+        fillTheList();
+
+        document.querySelector("#language").value = "";
+      }
+
+      function removeAllChildNodes(parent) {
+        while (parent.firstChild) {
+          parent.removeChild(parent.firstChild);
+        }
+      }
+    </script>
+  </body>
+</html>

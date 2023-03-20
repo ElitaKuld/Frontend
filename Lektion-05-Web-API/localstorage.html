@@ -21,7 +21,8 @@
 
       //Visa alla nycklar
       for (let i = 0; i < localStorage.length; i++) {
-        console.log(localStorage.key[i]);
+        console.log("Key: " + localStorage.key(i));
+        console.log("Value :" + localStorage.getItem(localStorage.key(i)));
       }
 
       //Ta bort från localStorage
