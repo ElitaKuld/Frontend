@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Local Storage Demo</title>
+  </head>
+  <body>
+    <h1>Local Storage Demo</h1>
+
+    <script>
+      localStorage.setItem("name", "Elita");
+
+      //Hämta data från localStorage
+      name = localStorage.getItem("name");
+      console.log(name);
+
+      localStorage.setItem("email", "example@gmail.com");
+      localStorage.setItem("mobile", "076-123456789");
+
+      //Visa alla nycklar
+      for (let i = 0; i < localStorage.length; i++) {
+        console.log(localStorage.key[i]);
+      }
+
+      //Ta bort från localStorage
+      localStorage.removeItem("mobile");
+      console.log(localStorage.getItem("mobile")); // null
+
+      //Rensa localStorage
+      console.log(localStorage);
+      localStorage.clear();
+      console.log(localStorage);
+
+      //Spara en array i localStorage
+      const array = ["A", "B", "C"];
+      localStorage.setItem("myArr", array); // sparas som en sträng A,B,C
+      localStorage.setItem("myArray", JSON.stringify(array)); // Med JSON.stringify sparas arrayen i rätt format ["A", "B", "C"]
+
+      //Hämta en array från localStorage
+      // hämtar sträng
+      const myArray = localStorage.getItem("myArray");
+      console.log(myArray);
+      console.log(myArray[0]); //[
+
+      //JSON.parse konverterar tillbaka till en array
+      const myArray2 = JSON.parse(localStorage.getItem("myArray"));
+      console.log(myArray2);
+      console.log(myArray2[0]); // A
+
+      //Spara ett objekt i localStorage
+      let obj = {
+        prop1: "A",
+        prop2: "B",
+        prop3: "C",
+      };
+      console.log(obj);
+
+      localStorage.setItem("myObj", JSON.stringify(obj));
+
+      obj = localStorage.getItem("myObj");
+      console.log(obj);
+      // OBS! En sträng
+
+      obj = JSON.parse(localStorage.getItem("myObj"));
+      console.log(obj);
+      // objekt
+    </script>
+  </body>
+</html>
