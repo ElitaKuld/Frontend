@@ -47,7 +47,7 @@
           if (xhr.readyState === 4 && xhr.status === 200) {
             document.getElementById("output").innerHTML = xhr.responseText;
           }
-        }
+        };
         xhr.open("GET", "demo.txt");
         xhr.send();
       }

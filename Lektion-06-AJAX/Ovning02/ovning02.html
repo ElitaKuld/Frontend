@@ -4,13 +4,21 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>API Example</title>
+    <title>Övning 2</title>
   </head>
   <body>
-    <h1>API Example</h1>
+    <h1>Övning 2</h1>
 
-    <button id="loadBtn">Hämta JSON från externt API</button>
-    <div id="output"></div>
+    <button id="loadBtn">Visa alla namn och email i en tabell</button>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody id="output"></tbody>
+    </table>
 
     <script>
       let loadBtn = document.getElementById("loadBtn");
@@ -31,11 +39,12 @@
       }
 
       function renderAPI(json) {
-        let output = "";
+        let tabell = "";
         json.forEach((user) => {
-          output += user.name + "<br>";
+          tabell +=
+            "<tr><td>" + user.name + "</td><td>" + user.email + "</td></tr>";
         });
-        document.getElementById("output").innerHTML = output;
+        document.getElementById("output").innerHTML = tabell;
       }
     </script>
   </body>
