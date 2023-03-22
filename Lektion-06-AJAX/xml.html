@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>XML</title>
+  </head>
+  <body>
+    <h1>XML Example</h1>
+
+    <button id="loadBtn">Visa alla titlar</button>
+    <ul id="output"></ul>
+
+    <script>
+      let loadBtn = document.getElementById("loadBtn");
+      loadBtn.addEventListener("click", loadXML);
+
+      function loadXML() {
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", "demo.xml");
+        xhr.send();
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4 && xhr.status === 200) {
+            const xmlDoc = xhr.responseXML;
+            console.log(xmlDoc);
+            renderXML(xmlDoc);
+          }
+        }
+      }
+
+      function renderXML(xml) {
+        const allCDs = xml.getElementsByTagName("CD");
+        let list = "";
+        for (let cd of allCDs) {
+          console.dir(cd); // OBS! dir (ej log)
+          list += "<li>" + cd.children[0].innerHTML + "</li>";
+        }
+        document.getElementById("output").innerHTML = list;
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JSON Example</title>
+  </head>
+  <body>
+    <h1>JSON Example</h1>
+
+    <button id="loadBtn">Hämta JSON från externt API</button>
+    <div id="output"></div>
+
+    <script>
+      let loadBtn = document.getElementById("loadBtn");
+      loadBtn.addEventListener("click", loadAPI);
+
+      function loadAPI() {
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", "https://jsonplaceholder.typicode.com/users");
+        xhr.send();
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4 && xhr.status === 200) {
+            console.log(xhr.response); // OBS! En sträng
+            const json = JSON.parse(xhr.response);
+            console.log(json);
+            renderAPI(json);
+          }
+        };
+      }
+
+      function renderAPI(json) {
+        let output = "";
+        json.forEach((user) => {
+          output += user.name + "<br>";
+        });
+        document.getElementById("output").innerHTML = output;
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Callback Function</title>
+</head>
+<body>
+    <h1>Callback</h1>
+    
+    <script>
+        // Namnlös(Anonym) callback:
+        let array = ["a", "b", "c"];
+        array.forEach(function(element){
+            console.log(element);
+        })
+
+        // Anonym arrow-funktion:
+        array.forEach(element => console.log(element));
+
+        // Namngiven callback:
+        array.forEach(printElement);
+
+        function printElement(element, index, array){
+            console.log(`${index}: ${element}`);
+        }
+
+        //Synkron callback:
+        console.log("START");
+        array.forEach(element => console.log(element));
+        console.log("FINISH"); //SLUT
+
+        //Asynkron callback:
+        console.log("START");
+        setTimeout(function(){
+            array.forEach(element => console.log(element));
+        }, 1000);
+        console.log("FINISH");
+
+
+    </script>
+</body>
+</html>

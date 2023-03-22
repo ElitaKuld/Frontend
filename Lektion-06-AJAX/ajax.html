@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ajax Example</title>
+  </head>
+  <body>
+    <h1>Ajax</h1>
+
+    <button id="loadBtn">Hämta text via Ajax</button>
+    <div id="output"></div>
+
+    <script>
+      //skapa ett instans av XHR(AJAX)
+      const xhr = new XMLHttpRequest();
+      console.log(xhr);
+      //console.log(xhr.readyState);
+
+      //GET - hämta data till en server
+      //POST - skicka data från en server
+      //skapa en request
+      xhr.open("GET", "demo.txt");
+      //console.log(xhr.readyState);
+
+      //skicka request
+      xhr.send();
+      //console.log(xhr.readyState);
+
+      xhr.onreadystatechange = function () {
+        console.log("readyState = " + xhr.readyState);
+        console.log("status = " + xhr.status); // 200 Det gick bra!
+        console.log("status = " + xhr.statusText);
+
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          console.log(xhr.responseText);
+        }
+      };
+
+      let loadBtn = document.getElementById("loadBtn");
+      loadBtn.addEventListener("click", loadText);
+
+      function loadText() {
+        const xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4 && xhr.status === 200) {
+            document.getElementById("output").innerHTML = xhr.responseText;
+          }
+        }
+        xhr.open("GET", "demo.txt");
+        xhr.send();
+      }
+    </script>
+  </body>
+</html>

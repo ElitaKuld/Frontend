@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JSON Example</title>
+  </head>
+  <body>
+    <h1>JSON Example</h1>
+
+    <button id="loadBtn">Visa namn och e-post</button>
+    <div id="output"></div>
+
+    <script>
+      let loadBtn = document.getElementById("loadBtn");
+      loadBtn.addEventListener("click", loadJSON);
+
+      function loadJSON() {
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", "demo.json");
+        xhr.send();
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4 && xhr.status === 200) {
+            console.log(xhr.response); // OBS! En sträng
+            const json = JSON.parse(xhr.response);
+            console.log(json); // JSON-objekt
+            renderJSON(json);
+          }
+        };
+      }
+
+      function renderJSON(json) {
+        document.getElementById(
+          "output"
+        ).innerHTML = `
+        <h2>${json.name}</h2>
+        <h2>Email: ${json.email}</h2>
+        <h2>Company: ${json.company.name}
+        `;
+      }
+    </script>
+  </body>
+</html>
