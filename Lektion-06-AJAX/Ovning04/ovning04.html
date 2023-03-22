@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Övning 4</title>
+  </head>
+  <body>
+    <h1>Övning 4</h1>
+
+    <button id="loadBtn">Visa To-Do list</button>
+    <ul id="output"></ul>
+
+    <script>
+      let loadBtn = document.getElementById("loadBtn");
+      loadBtn.addEventListener("click", loadAPI);
+
+      function loadAPI() {
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", "https://jsonplaceholder.typicode.com/todos");
+        xhr.send();
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4 && xhr.status === 200) {
+            console.log(xhr.response); // OBS! En sträng
+            const json = JSON.parse(xhr.response);
+            console.log(json);
+            renderAPI(json);
+          }
+        };
+      }
+
+      function renderAPI(json) {
+        let list = "";
+        json.forEach((todo) => {
+          if (todo.completed === false) {
+            list += "<li>" + todo.title + "</li>";
+          } else {
+            list +=
+              "<li style='text-decoration: line-through;'>" +
+              todo.title +
+              "</li>";
+          }
+        });
+        document.getElementById("output").innerHTML = list;
+      }
+    </script>
+  </body>
+</html>
