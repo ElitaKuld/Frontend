@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JQuery Intern Demo</title>
+  </head>
+  <body>
+    <div id="nav"></div>
+
+    <h1>JQuery Intern Demo</h1>
+
+    <div id="demo"></div>
+    <hr />
+
+    <button id="button">Hämta data från en textfil</button>
+    <div id="demo2"></div>
+    <hr />
+
+    <div id="demo3"></div>
+    <hr />
+
+    <h2>Lista alla hundraser från DOG API</h2>
+    <ol id="breeds"></ol>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+    <script>
+      $(document).ready(function () {
+        console.log("Hello jQuery!");
+        // Hämta filen demo.txt och placera den i det angivna elementet
+        //Fungerar med olika format
+        $("#demo").load("demo.txt");
+
+        // Hämta innehållet från nav.html och placera den i naven "nav"
+        $("#nav").load("nav.html");
+
+        //Hämta data från en fil med hjälp an en knapp
+        $("#button").click(function () {
+          $("#demo2").load("demo.txt");
+        });
+
+        //Hämta data från JSON
+        //Har Parse bakom kulisserna
+        $.getJSON("demo.json", function (data) {
+          console.log(data);
+          $("#demo3").html(data.name);
+        });
+
+        //Ett snyggare sätt att göra samma sak
+        $.getJSON("demo.json", (data) => $("#demo3").html(data.username));
+
+        //Hämta alla hundraser
+        const url = "https://dog.ceo/api/breeds/list/all";
+        $.getJSON(url, function (data) {
+          $.each(data.message, (index, value) =>
+            $("#breeds").append("<li>" + index + "</li>")
+          );
+        });
+      });
+    </script>
+  </body>
+</html>

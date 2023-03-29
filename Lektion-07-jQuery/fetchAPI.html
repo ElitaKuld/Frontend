@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fetch API</title>
+  </head>
+  <body>
+    <h1>Fetch API Demo</h1>
+    <div id="info"></div>
+    <button onclick="loadJSON()">Ladda JSON från en fil</button>
+    <hr />
+    <button id="getBtn">Hämta alla användare från JSON Placeholder</button>
+    <hr>
+    <button id="getBtnNew">Hämta alla användare från JSON Placeholder och placera dem i en div</button>
+    <div id="output"></div>
+
+    <script>
+      fetch("demo.txt")
+        .then((response) => response.text())
+        .then((data) => console.log(data))
+        .catch((error) => console.error(error));
+
+      fetch("nav.html")
+        .then((response) => response.text())
+        .then((data) => console.log(data))
+        .catch((error) => console.error(error));
+
+      fetch("demo.json")
+        .then((response) => response.json())
+        .then((data) => console.log(data))
+        .catch((error) => console.error(error));
+
+      // Promise syntax
+      function loadJSON(url) {
+        fetch("demo.json")
+          .then((response) => response.json())
+          .then((data) => console.log(data))
+          .catch((error) => console.error(error));
+      }
+
+      loadJSON("demo.json");
+
+      //Asinkron funktion/Async syntax:
+      async function getData(url) {
+        let response = await fetch(url);
+        let data = await response.json();
+        // Render data
+        console.log(data);
+      }
+
+      getData("demo.json");
+
+      fetch("https://jsonplaceholder.typicode.com/todos/1")
+        .then((response) => response.json())
+        .then((json) => console.log(json));
+
+      fetch("https://jsonplaceholder.typicode.com/users")
+        .then((response) => response.json())
+        .then((json) => console.log(json));
+
+      getData("https://jsonplaceholder.typicode.com/users");
+
+      let getBtn = document.getElementById("getBtn");
+      getBtn.addEventListener("click", function () {
+        getData("https://jsonplaceholder.typicode.com/users");
+      });
+
+      //Arbeta med att rendera DOM
+
+      let getBtnNew = document.getElementById("getBtnNew")
+      ;
+      getBtnNew.addEventListener("click", function () {
+        getUsers("https://jsonplaceholder.typicode.com/users");
+      });
+      
+      async function getUsers(url) {
+        let response = await fetch(url);
+        let data = await response.json();
+        render(data);
+      }
+
+      function render(json){
+        let output = "";
+
+        json.forEach(user => {
+            output += user.name + "<br>";   
+        });
+
+        document.getElementById("output").innerHTML = output;
+
+      }
+    </script>
+  </body>
+</html>
